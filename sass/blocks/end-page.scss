@@ -1,0 +1,31 @@
+@import "../../sass/_variables";
+
+.end-page__picture {
+  width: 503px;
+  margin: 0 auto;
+  padding-top: 7%;
+}
+
+.end-page {
+  position: relative;
+  .btnSquare {
+    position: relative;
+    margin: 0 auto;
+    padding: 10px 30px;
+    z-index: 10;
+  }
+  
+  p {
+    margin: 0;
+  }
+}
+
+#canvas {
+  position:  absolute;
+  z-index: 0;
+  top: 0;
+  left:  0;
+  width: 100%;
+  height: vh;
+  display: block;
+}

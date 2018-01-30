@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <title>Memory</title>
+</head>
+<body>
+  <main class="appContainer" data-tid="App">
+   <audio src="media/pinkPantera.mp3" autoplay loop id="backMusic"></audio>
+    <div class="start-page">
+      <div class="start-page__picture">
+        <img src="img/StartGame.png" alt="Игра Memory" width="503" height="262">
+      </div>
+      <header>
+        <h1>Memory game</h1>
+      </header>
+      <button class="btn btnSquare" id="startGame" data-tid="NewGame-startGame">Начать игру</button>
+    </div>
+    <div class="game-page hidden">    
+      <div class="game-field" data-tid="Deck">
+        <div class="game-field__settings">
+          <button class="btn" id="reloadGame"  data-tid="Menu-newGame">Начать заново</button>
+          <div class="game-field__settings_score" data-tid="Menu-scores">Очки: <span>0</span></div>
+        </div>
+        <table>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>   
+<!--      <audio class="failureSound" src="media/failure.mp3"></audio>-->
+      <audio class="successSound" src="media/success.mp3"></audio>
+    </div>
+    <div class="end-page hidden">
+      <div class="end-page__picture">
+        <img src="img/Group%202.png" alt="Конец игры Memory" width="516" height="275">
+      </div>
+      <header>
+        <h2>Поздравляем!<p>Ваш итоговый счет: <span></span></p></h2>
+      </header>
+      <button class="btn btnSquare" id="gameAgain" data-tid="EndGame-retryGame">Еще раз</button>
+      <canvas id="canvas"></canvas>
+    </div>   
+  </main>
+  
+<script src="js/util.js"></script>
+<script src="js/card.js"></script>
+<script src="js/score.js"></script>
+<script src="js/canvas.js"></script>
+<script src="js/gameProcess.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
