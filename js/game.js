@@ -35,7 +35,9 @@
       checkHiddenPage(startPage);
       checkHiddenPage(endPage);
       gamePage.classList.remove('hidden');
-      
+      gamePage.addEventListener('mousemove', function(evt) {
+        evt.preventDefault();
+      });
       
       window.card.shuffleDoubleCards = window.card.getShuffleDoubleCards();
       window.card.showAllCards(window.card.shuffleDoubleCards);
