@@ -7,11 +7,14 @@
     display: block;
     margin: 0 auto;
   }
+  
 }
 
 @media screen and (max-width: 580px ) {  
+  
   .start-page__picture img {
     width: 320px;
     height: 160px;
   }
+  
 }

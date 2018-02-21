@@ -10,14 +10,17 @@
 }
 
 @media screen and (max-width: 580px ) {  
+  
   .end-page__picture img {
     width: 320px;
     height: 160px;
   }
+  
 }
 
 .end-page {
   position: relative;
+  
   .btnSquare {
     position: relative;
     margin: 0 auto;
@@ -25,7 +28,4 @@
     z-index: 10;
   }
   
-  p {
-    margin: 0;
-  }
 }
