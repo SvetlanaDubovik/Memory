@@ -1,59 +1,76 @@
-"use strict";
-(function() {  
+'use strict';
 
-  var checkHiddenPage = function(page) {
-    if(!page.classList.contains('hidden')) {
-      page.classList.add('hidden');
-    }
-  };
+(function() {
   
-  var clearPage = function() {
-    window.card.deck = [];
-    window.card.shuffleDoubleCards = null;
-    var gameTable = document.querySelector('table');
-    var cardsBlock = gameTable.querySelectorAll('.card');
-    var gameTableCell = document.querySelectorAll('td');
-    for (var i = 0; i < gameTableCell.length; i++) {
-      gameTableCell[i].removeEventListener('click', window.gameProcess.clickCardHandler);
-    }
-    for (var i = 0; i < cardsBlock.length; i++) {
-      cardsBlock[i].parentElement.removeChild(cardsBlock[i]);
-    }
-    window.score.totalScore = 0;
-    window.score.showResult(window.gameProcess.totalScore);
-    window.score.openPairs = 0;
-  };
-  
-  window.game = {
-    startGameHandler: function() {
-      clearPage();
-      var startPage = document.querySelector('.start-page');
-      var gamePage = document.querySelector('.game-page');
-      var endPage = document.querySelector('.end-page'); 
-      var audio = document.querySelector('audio');
+  window.game = new function() {
+    
+    var shownCards = [];
+    var cards = window.cards;
+    var deletedPairsCount = 0;
+    var score = window.score;
+    var ALL_PAIRS = window.settings.ALL_PAIRS;
+    var CARDS_PAIR_SHOW_INTERVAL_MS = window.settings.CARDS_PAIR_SHOW_INTERVAL_MS;
+    var showScore = window.showScore;
+    var successSound = document.querySelector('.successSound');
+    
+    var shownCardsAreTheSame = function() {
+      return cards.areTheSame(shownCards[0], shownCards[1]);
+    };
+    
+    var hideCardsPair = function() {
+      cards.hideCard(shownCards[0]);
+      cards.hideCard(shownCards[1]);
+    };
+    
+    var deleteCardsPair = function() {
+      cards.deleteCard(shownCards[0]);
+      cards.deleteCard(shownCards[1]);
+    };
+    
+    var handleSuccessfullStep = function() {
+      score.countScore(true);
+      showScore();
+      deleteCardsPair();
+      deletedPairsCount++;
+      shownCards = [];
+      successSound.play();
+    
+      if(deletedPairsCount === ALL_PAIRS) {
+        window.handleGameOver(score.getTotalScore());
 
-      checkHiddenPage(startPage);
-      checkHiddenPage(endPage);
-      gamePage.classList.remove('hidden');
-      gamePage.addEventListener('mousemove', function(evt) {
-        evt.preventDefault();
-      });
-      
-      window.card.shuffleDoubleCards = window.card.getShuffleDoubleCards();
-      window.card.showAllCards(window.card.shuffleDoubleCards);
-      var btnReload = document.querySelector('#reloadGame');
-      btnReload.addEventListener('click', function () {
-        window.util.debounce(function () {
-          audio.currentTime = 0;
-          window.game.startGameHandler();
-        });
-          
-      });
-    }      
-  };
-  
-  var btnStart = document.querySelector('#startGame');
-  btnStart.addEventListener('click', window.game.startGameHandler);
-  
+      }
+    };
+    
+    var handleFailStep = function() {
+      score.countScore(false);
+      showScore();
+      hideCardsPair();
+      shownCards = [];
+    };
+    
+    this.startNew = function() {
+      score.reset();
+      shownCards = [];
+      cards.refresh();
+      showScore();
+      cards.showAndHideAll();
+      deletedPairsCount = 0;
+    };
+    
+    this.clickCardProcess = function(card) {
+      if(shownCards.length < 2 && shownCards.indexOf(card) === -1) {
+        cards.showCard(card);
+        shownCards.push(card);
+
+        if (shownCards.length === 2) {         
+          if(shownCardsAreTheSame()) {
+            setTimeout(handleSuccessfullStep, CARDS_PAIR_SHOW_INTERVAL_MS);
+          } else {
+            setTimeout(handleFailStep, CARDS_PAIR_SHOW_INTERVAL_MS);
+          }
+        } 
+      }
+    };
+  }();
   
 })();

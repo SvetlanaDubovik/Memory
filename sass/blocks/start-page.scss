@@ -1,7 +1,17 @@
 @import "../../sass/_variables";
 
 .start-page__picture {
-  width: 503px;
-  margin: 0 auto;
   padding-top: 7%;
+  
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 580px ) {  
+  .start-page__picture img {
+    width: 320px;
+    height: 160px;
+  }
 }

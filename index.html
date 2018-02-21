@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="css/style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
   <title>Memory</title>
 </head>
 <body>
-  <main class="appContainer" data-tid="App">
-   <audio src="media/pinkPantera.mp3" autoplay loop id="backMusic"></audio>
+  <main class="appContainer" id="container" data-tid="App">
+   <audio src="media/pinkPantera.mp3" autoplay loop id="backgroundMusic"></audio>
     <div class="start-page">
       <div class="start-page__picture">
-        <img src="img/StartGame.png" alt="Игра Memory" width="503" height="262">
+        <img src="img/StartGame.png" srcset="img/StartGame@2x.png 2x" alt="Игра Memory" width="503" height="262">
       </div>
-      <header>
         <h1>Memory game</h1>
-      </header>
       <button class="btn btnSquare" id="startGame" data-tid="NewGame-startGame">Начать игру</button>
     </div>
     <div class="game-page hidden">    
@@ -54,26 +52,29 @@
           </tbody>
         </table>
       </div>   
-<!--      <audio class="failureSound" src="media/failure.mp3"></audio>-->
       <audio class="successSound" src="media/success.mp3"></audio>
     </div>
     <div class="end-page hidden">
       <div class="end-page__picture">
-        <img src="img/Group%202.png" alt="Конец игры Memory" width="516" height="275">
+        <img src="img/Group%202.png" srcset="img/Group%202@2x.png" alt="Конец игры Memory" width="516" height="275">
       </div>
-      <header>
-        <h2>Поздравляем!<p>Ваш итоговый счет: <span></span></p></h2>
-      </header>
+        <h2>Поздравляем!</h2>
+        <h2>Ваш итоговый счет: <span></span></h2>
       <button class="btn btnSquare" id="gameAgain" data-tid="EndGame-retryGame">Еще раз</button>
-      <canvas id="canvas"></canvas>
     </div>   
   </main>
   
-<script src="js/util.js"></script>
-<script src="js/card.js"></script>
-<script src="js/score.js"></script>
-<script src="js/canvas.js"></script>
-<script src="js/gameProcess.js"></script>
-<script src="js/game.js"></script>
-</body>
+  <script src="js/settings.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/generateCardNames.js"></script>
+  <script src="js/cards.js"></script>
+  <script src="js/score.js"></script>
+  <script src="js/showScore.js"></script>
+  <script src="js/handleGameOver.js"></script>
+  <script src="js/game.js"></script>
+  <!--<script src="js/canvas.js"></script>-->
+  <!--<script src="js/rainyday.min.js"></script>-->
+  <script src="js/clickCardHandler.js"></script>
+  <script src="js/startGameHandler.js"></script>
+  </body>
 </html>

@@ -22,16 +22,9 @@ html, body {
   padding: 0;
   margin: 0;
   font-family: "openSansBold";
-  height: 100%;
-  color: #fff; }
-
-.appContainer {
-  width: 100%;
-  height: 100%;
-  background-color: #1C7430; }
-
-.btn {
-  font-family: "openSansBold"; }
+  color: #fff;
+  background-color: #1C7430;
+  width: 100%; }
 
 .btn {
   background-color: #1C7430;
@@ -40,7 +33,20 @@ html, body {
   opacity: 0.8;
   font-size: 14px;
   letter-spacing: -0.25px;
+  font-family: "openSansBold";
   padding: 0 5px; }
+
+.btnSquare {
+  display: block;
+  margin: 0 auto;
+  color: #1C7430;
+  font-size: 16px;
+  background-color: #fff;
+  opacity: 0.8;
+  line-height: 22px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px; }
 
 .hidden {
   overflow: hidden;
@@ -61,33 +67,30 @@ h2 {
   line-height: 38px;
   letter-spacing: 0.2px;
   opacity: 0.85;
-  padding-bottom: 20px;
+  padding-bottom: 0;
+  margin-bottom: 0;
   white-space: pre-wrap; }
 
-.btnSquare {
-  display: block;
-  margin: 0 auto;
-  color: #1C7430;
-  font-size: 16px;
-  background-color: #fff;
-  opacity: 0.8;
-  line-height: 22px;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px; }
+h2:last-of-type {
+  margin-bottom: 40px;
+  margin-top: 0; }
 
 .transparent {
   background: transparent; }
 
 .start-page__picture {
-  width: 503px;
-  margin: 0 auto;
   padding-top: 7%; }
+  .start-page__picture img {
+    display: block;
+    margin: 0 auto; }
 
+@media screen and (max-width: 580px) {
+  .start-page__picture img {
+    width: 320px;
+    height: 160px; } }
 .game-field {
   margin: 0 auto;
-  max-width: 700px;
-  min-width: 320px; }
+  width: 700px; }
 
 .game-field__settings {
   padding: 80px 0 10px;
@@ -100,12 +103,7 @@ h2 {
     letter-spacing: 0;
     padding: 0 5px; }
 
-table {
-  width: 700px;
-  height: 460px; }
-
 tr {
-  height: 140px;
   width: 700px;
   display: flex;
   justify-content: space-between;
@@ -118,10 +116,15 @@ td {
   padding: 0; }
 
 .end-page__picture {
-  width: 503px;
-  margin: 0 auto;
   padding-top: 7%; }
+  .end-page__picture img {
+    display: block;
+    margin: 0 auto; }
 
+@media screen and (max-width: 580px) {
+  .end-page__picture img {
+    width: 320px;
+    height: 160px; } }
 .end-page {
   position: relative; }
   .end-page .btnSquare {
@@ -131,14 +134,5 @@ td {
     z-index: 10; }
   .end-page p {
     margin: 0; }
-
-#canvas {
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: vh;
-  display: block; }
 
 /*# sourceMappingURL=style.css.map */

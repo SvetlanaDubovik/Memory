@@ -1,7 +1,6 @@
 "use strict";
 
 (function() {
-  var DEBOUNCE_INTERVAL = 500; // ms
   var lastTimeout; 
   
   window.util = {
@@ -19,11 +18,11 @@
       }
       return res;
     },
-    debounce: function (fun) {
+    debounce: function (fun, interval) {
       if (lastTimeout) {
         window.clearTimeout(lastTimeout);
       }
-      lastTimeout = window.setTimeout(fun, DEBOUNCE_INTERVAL);
+      lastTimeout = window.setTimeout(fun, interval);
     }
   };
   

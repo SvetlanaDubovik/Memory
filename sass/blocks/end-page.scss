@@ -1,9 +1,19 @@
 @import "../../sass/_variables";
 
 .end-page__picture {
-  width: 503px;
-  margin: 0 auto;
-  padding-top: 7%;
+  padding-top: 7%;  
+    
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 580px ) {  
+  .end-page__picture img {
+    width: 320px;
+    height: 160px;
+  }
 }
 
 .end-page {
@@ -18,14 +28,4 @@
   p {
     margin: 0;
   }
-}
-
-#canvas {
-  position:  absolute;
-  z-index: 0;
-  top: 0;
-  left:  0;
-  width: 100%;
-  height: vh;
-  display: block;
 }

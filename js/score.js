@@ -1,30 +1,37 @@
-"use strict";
+"use straict";
 
 (function() {
-
-  var ALL_PAIRS = 9;
   
-  window.score = {
-    openPairs: 0,
-    totalScore: 0,
-    countPoints: function(flag) {
-      var score = 0;
-      if (flag) {
-        window.score.openPairs++;
-        score = (ALL_PAIRS - window.score.openPairs) * 42;
-        window.score.totalScore += score;
+  var POINT = window.settings.POINT;
+  var ALL_PAIR = window.settings.ALL_PAIRS;
+  
+  window.score = new function() {    
+    var totalScore = 0;
+    var openPairs = 0;
+    
+    this.countScore = function(toIncrease) {      
+      var stepScore = 0;
+      
+      if (toIncrease) {
+        openPairs++;
+        stepScore = (ALL_PAIR - openPairs) * POINT;
+        totalScore += stepScore;
       } else {
-        score = window.score.openPairs * 42;
-        window.score.totalScore -= score;
-      } 
-//      if (window.score.totalScore < 0) {
-//        window.score.totalScore = 0;
-//      }           
-      window.score.showResult(window.score.totalScore);
-    },   
-    showResult: function(count) {
-      var scoreField = document.querySelector('.game-field__settings_score span');
-      scoreField.textContent = count;
-    }
-  };
+        stepScore = openPairs * POINT;
+        totalScore -= stepScore;
+      }       
+    };
+    
+    this.reset = function() {
+      openPairs = 0;
+      totalScore = 0;
+    };
+    
+    this.getTotalScore = function() {
+      return totalScore;
+    };
+    
+  }();
+
+  
 })();
